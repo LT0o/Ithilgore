@@ -98,16 +98,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountData.cs" />
+    <Compile Include="AddressBook\AccountData.cs" />
     <Compile Include="Figures\Circle.cs" />
     <Compile Include="Figures\Figure.cs" />
     <Compile Include="Figures\Square.cs" />
-    <Compile Include="GroupCreationTests - Copy.cs" />
-    <Compile Include="Before_1.6_GroupCreationTests.cs" />
-    <Compile Include="GroupData.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="AddressBook\GroupCreationTests - Copy.cs" />
+    <Compile Include="Baraholka\Before_1.6_GroupCreationTests.cs" />
+    <Compile Include="AddressBook\GroupData.cs" />
+    <Compile Include="Figures\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OLD_GroupCreationTests.cs" />
+    <Compile Include="Baraholka\OLD_GroupCreationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
