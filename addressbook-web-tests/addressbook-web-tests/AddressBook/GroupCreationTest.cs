@@ -40,6 +40,8 @@ namespace WebAddressbookTests
         }
 
         [Test]
+
+        #region TestInColour
         public void GroupCreationTest()
         {
             OpenHomePage();
@@ -50,7 +52,9 @@ namespace WebAddressbookTests
             SubmitGroupCreation();
             ReturnToGroupsPage();          
         }
+        #endregion
 
+        #region TestMethods
         private void ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("groups")).Click();
@@ -95,7 +99,9 @@ namespace WebAddressbookTests
         {
             driver.Navigate().GoToUrl(baseURL);
         }
+        #endregion
 
+        #region DriverMethods
         private bool IsElementPresent(By by)
         {
             try
@@ -143,5 +149,7 @@ namespace WebAddressbookTests
                 acceptNextAlert = true;
             }
         }
+        #endregion 
+
     }
 }
