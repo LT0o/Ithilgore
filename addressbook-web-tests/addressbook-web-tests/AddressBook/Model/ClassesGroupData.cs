@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace WebAddressbookTests
 {
-    class GroupData
+    public class GroupData
     {
         private string name;
         private string header;
         private string footer;
 
-        public GroupData(string name, string header, string footer)
-        {
-            this.name = name;
-            this.header = header;
-            this.footer = footer;
-
-
-        }
+        //public GroupData(string name, string header, string footer)
+        //{
+        //    this.name = name;
+        //    this.header = header;
+        //    this.footer = footer;
+        //
+        //}
 
         public string Name
         {

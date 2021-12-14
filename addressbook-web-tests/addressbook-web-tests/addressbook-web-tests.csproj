@@ -98,25 +98,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressBook\ClassesAccountData.cs" />
-    <Compile Include="AddressBook\MyMethods.cs" />
-    <Compile Include="AddressBook\ContactCreationTest.cs" />
+    <Compile Include="AppManager\ApplicationManager.cs" />
+    <Compile Include="AppManager\GroupHelper.cs" />
+    <Compile Include="AppManager\HelperBase.cs" />
+    <Compile Include="AppManager\LoginHelper.cs" />
+    <Compile Include="AddressBook\Model\ClassesAccountData.cs" />
+    <Compile Include="AppManager\MyMethods.cs" />
+    <Compile Include="AddressBook\Tests\ContactCreationTest.cs" />
+    <Compile Include="AppManager\NavigationHelper.cs" />
+    <Compile Include="AddressBook\Tests\TestBase.cs" />
     <Compile Include="Figures\Circle.cs" />
     <Compile Include="Figures\Figure.cs" />
     <Compile Include="Figures\Square.cs" />
-    <Compile Include="AddressBook\GroupCreationTest.cs" />
+    <Compile Include="AddressBook\Tests\GroupCreationTest.cs" />
     <Compile Include="Baraholka\Before_1.6_GroupCreationTests.cs" />
-    <Compile Include="AddressBook\ClassesGroupData.cs" />
+    <Compile Include="AddressBook\Model\ClassesGroupData.cs" />
     <Compile Include="Figures\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Baraholka\OLD_GroupCreationTests.cs" />
+    <Compile Include="AddressBook\Tests\GroupRemovalTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Baraholka\BackupContactCreationTest.txt" />
+    <Content Include="Baraholka\BackupGroupCreation.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
