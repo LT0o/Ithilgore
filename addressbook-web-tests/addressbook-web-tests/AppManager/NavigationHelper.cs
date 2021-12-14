@@ -20,6 +20,17 @@ namespace WebAddressbookTests
         }
 
 
+
+        public NavigationHelper GoToGPandLogout()
+        {
+            GoToGroupsPage();
+            manager.Auth.Logout();
+            return this;
+        }
+
+
+
+
         public void GoToHomePage()
         {
             driver.Navigate().GoToUrl(baseURL);
@@ -29,6 +40,9 @@ namespace WebAddressbookTests
         {
             driver.FindElement(By.LinkText("groups")).Click();
         }
+
+
+
 
 
 

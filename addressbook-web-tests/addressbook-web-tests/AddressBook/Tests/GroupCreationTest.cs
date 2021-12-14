@@ -18,14 +18,13 @@ namespace WebAddressbookTests
         public void GroupCreationTest()
         {
             GroupData group = new GroupData();
-            group.Name = "zGroupName23";
+            group.Name = "zGroupName27";
             group.Header = "zGroupHeader";
             group.Footer = "zGroupFooter15";
 
             
             app.Groups.CreateGroup(group);
-            app.Navigator.GoToGroupsPage();
-            app.Auth.Logout();
+            app.Navigator.GoToGPandLogout();
         }
         #endregion
 
@@ -40,9 +39,8 @@ namespace WebAddressbookTests
             group.Footer = "";
 
             
-            app.Groups.CreateGroup(group); 
-            app.Navigator.GoToGroupsPage();
-            app.Auth.Logout();
+            app.Groups.CreateGroup(group);
+            app.Navigator.GoToGPandLogout();
         }
         #endregion
 
