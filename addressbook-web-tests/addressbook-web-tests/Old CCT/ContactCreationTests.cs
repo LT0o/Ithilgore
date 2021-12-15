@@ -85,9 +85,9 @@ namespace WebAddressbookTests
             new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText("1");
             new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText("January");
             driver.FindElement(By.Name("ayear")).SendKeys("1990");
-            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText("zGroupName");
+            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText("zGroupName15");
             driver.FindElement(By.Name("address2")).SendKeys("zAddress-2");
-            driver.FindElement(By.Name("phone2")).SendKeys("zHome-2");
+            driver.FindElement(By.Name("phone2")).SendKeys("zPhone-2");
             driver.FindElement(By.Name("notes")).SendKeys("zNotes");
             driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
         }

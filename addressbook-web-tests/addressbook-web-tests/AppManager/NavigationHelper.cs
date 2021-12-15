@@ -41,7 +41,12 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
-
+        public NavigationHelper GoToHPandLogout()
+        {
+            GoToHomePage();
+            manager.Auth.Logout();
+            return this;
+        }
 
 
 
