@@ -50,7 +50,7 @@ namespace WebAddressbookTests
             manager.Navigator.GoToGroupsPage();
             SelectGroup(v);
             RemoveGroup();
-                        return this;
+            return this;
 
         }
 
@@ -97,12 +97,7 @@ namespace WebAddressbookTests
 
 
 
-        public GroupHelper SubmitGroupModification()
-        {
-            driver.FindElement(By.Name("update")).Click();
-
-            return this;
-        }
+      
 
         public GroupHelper InitGroupModification()
         {
@@ -111,7 +106,12 @@ namespace WebAddressbookTests
 
             return this;
         }
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
 
+            return this;
+        }
 
     }
 }
