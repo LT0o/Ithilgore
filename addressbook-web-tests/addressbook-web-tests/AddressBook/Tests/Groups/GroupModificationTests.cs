@@ -16,10 +16,11 @@ namespace WebAddressbookTests
         public void GroupModificationTest()
         {
             GroupData newData = new GroupData();
-            newData.Name = "zGroupName10027";
-            newData.Header = "zGroupHeader10027";
-            newData.Footer = "zGroupFooter10027";
-
+            newData.Name = "zGroupName300";
+            //newData.Header = "zGroupHeader10027";
+            //newData.Footer = "zGroupFooter10027";
+            newData.Header = null;
+            newData.Footer = null;
 
             app.Groups.Modify(1, newData );
             app.Navigator.GoToGPandLogout();

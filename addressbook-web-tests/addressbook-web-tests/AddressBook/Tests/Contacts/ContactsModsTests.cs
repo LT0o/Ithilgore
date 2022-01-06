@@ -15,10 +15,11 @@ namespace WebAddressbookTests
         {
             #region Testdata
             ContactData contact = new ContactData();
-            contact.Firstname = "zFirstName900";
-            contact.Middlename = "zMiddleName";
-            contact.Lastname = "zLastName";
-            contact.Nickname = "zNickname";
+            contact.Firstname = "zFirstName3000";
+            //contact.Middlename = "zMiddleName";
+            contact.Middlename = null;
+            contact.Lastname = "zLastName3000";
+            contact.Nickname = "zNickname3000";
             contact.Title = "zTitle";
             contact.Company = "zCompany";
             contact.Address = "zAddress";

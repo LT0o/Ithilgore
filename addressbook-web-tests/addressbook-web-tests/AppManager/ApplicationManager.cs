@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -20,15 +21,9 @@ namespace WebAddressbookTests
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
         protected ContactsHelper contactsHelper;
+        private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
-
-
-
-
-
-
-
-        public ApplicationManager()
+        private ApplicationManager()
         {
             driver = new ChromeDriver();
             baseURL = "http://localhost/addressbook";
@@ -39,15 +34,7 @@ namespace WebAddressbookTests
             contactsHelper = new ContactsHelper(this);
 
         }
-        public IWebDriver Driver
-        {
-            get
-            {
-                return driver;
-            }
-        }
-        
-        public void Stop()
+        ~ApplicationManager()
         {
             try
             {
@@ -59,7 +46,37 @@ namespace WebAddressbookTests
             }
             //Assert.AreEqual("", verificationErrors.ToString());
 
+
         }
+
+
+
+
+
+        public static ApplicationManager GetInstance()
+        {
+           if (! app.IsValueCreated)
+            {
+                app.Value = new ApplicationManager();
+            }
+            return app.Value;
+        }
+
+
+
+
+
+
+
+        public IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
+        }
+        
+        
 
         public LoginHelper Auth
         {
