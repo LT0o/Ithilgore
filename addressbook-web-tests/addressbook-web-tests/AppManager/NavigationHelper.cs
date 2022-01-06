@@ -24,7 +24,7 @@ namespace WebAddressbookTests
         public NavigationHelper GoToGPandLogout()
         {
             GoToGroupsPage();
-            manager.Auth.Logout();
+            //manager.Auth.Logout();
             return this;
         }
 
