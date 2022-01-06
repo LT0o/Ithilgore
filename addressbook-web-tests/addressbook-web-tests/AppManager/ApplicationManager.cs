@@ -45,7 +45,7 @@ namespace WebAddressbookTests
                 // Ignore errors if unable to close the browser
             }
             //Assert.AreEqual("", verificationErrors.ToString());
-
+            System.Console.Out.Write("Done!!!");
 
         }
 
