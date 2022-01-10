@@ -99,11 +99,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressBook\Model\ClassesContactsData.cs" />
+    <Compile Include="AddressBook\Tests\AuthTestBase.cs" />
     <Compile Include="AddressBook\Tests\Contacts\ContactsCreationTests.cs" />
     <Compile Include="AddressBook\Tests\Contacts\ContactsModsTests.cs" />
     <Compile Include="AddressBook\Tests\Contacts\ContactsRemovalTests.cs" />
     <Compile Include="AddressBook\Tests\Groups\GroupModificationTests.cs" />
-    <Compile Include="AddressBook\Tests\TestSuiteFixture.cs" />
+    <Compile Include="AddressBook\Tests\LoginTests.cs" />
+    <Compile Include="AddressBook\Tests\NOT USED %28TestSuiteFixture%29.cs" />
     <Compile Include="AppManager\ApplicationManager.cs" />
     <Compile Include="AppManager\ContactsHelper.cs" />
     <Compile Include="AppManager\GroupHelper.cs" />

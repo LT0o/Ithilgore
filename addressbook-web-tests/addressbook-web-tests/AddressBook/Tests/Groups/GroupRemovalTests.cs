@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupRemovalTests : TestBase
+    public class GroupRemovalTests : AuthTestBase
     {
         
 
@@ -16,7 +16,8 @@ namespace WebAddressbookTests
         public void GroupRemovalTest()
         {
             app.Groups.Remove(19);
-            app.Navigator.GoToGPandLogout();
+            app.Navigator.GoToGroupsPage();
+            //app.Navigator.GoToGPandLogout();
         }
 
         

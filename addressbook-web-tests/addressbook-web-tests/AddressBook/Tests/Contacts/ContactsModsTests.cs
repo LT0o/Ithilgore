@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    class ContactsModsTests : TestBase
+    class ContactsModsTests : AuthTestBase
     {
 
         [Test]
@@ -43,7 +43,8 @@ namespace WebAddressbookTests
             contact.Notes = "zNotes-2";
             #endregion
             app.Contacts.Modify(2, contact);
-            app.Navigator.GoToHPandLogout();
+            app.Navigator.GoToHomePage();
+            //app.Navigator.GoToHPandLogout();
         }
 
 

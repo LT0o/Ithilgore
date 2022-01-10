@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace WebAddressbookTests
 {
     [TestFixture]
-    public class GroupModificationTests : TestBase
+    public class GroupModificationTests : AuthTestBase
     {
 
 
@@ -23,7 +23,8 @@ namespace WebAddressbookTests
             newData.Footer = null;
 
             app.Groups.Modify(1, newData );
-            app.Navigator.GoToGPandLogout();
+            app.Navigator.GoToGroupsPage();
+            //app.Navigator.GoToGPandLogout();
 
 
 
