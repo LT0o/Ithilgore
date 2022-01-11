@@ -15,7 +15,12 @@ namespace WebAddressbookTests
         [Test]
         public void GroupRemovalTest()
         {
-            app.Groups.Remove(19);
+            GroupData group = new GroupData();
+            group.Name = "zGroupName780000";
+            group.Header = "zGroupHeader";
+            group.Footer = "zGroupFooter15";
+
+            app.Groups.Remove(group, 1);
             app.Navigator.GoToGroupsPage();
             //app.Navigator.GoToGPandLogout();
         }

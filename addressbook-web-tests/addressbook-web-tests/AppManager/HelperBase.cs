@@ -28,6 +28,17 @@ namespace WebAddressbookTests
             }
         }
 
+        public void Type2(By locator2, string text2)
+        {
+            if (text2 != null)
+            {
+                new SelectElement(driver.FindElement(locator2)).SelectByText(text2);                
+            }
+        }
+
+
+
+
         public bool IsElementPresent(By by)
         {
             try

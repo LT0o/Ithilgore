@@ -21,6 +21,7 @@ namespace WebAddressbookTests
             //newData.Footer = "zGroupFooter10027";
             newData.Header = null;
             newData.Footer = null;
+
             GroupData group = new GroupData();
             group.Name = "zGroupName27000";
             group.Header = "zGroupHeader";

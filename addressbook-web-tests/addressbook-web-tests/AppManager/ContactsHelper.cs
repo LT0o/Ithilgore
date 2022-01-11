@@ -29,20 +29,22 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public ContactsHelper Modify(int v, ContactData contact)
+        public ContactsHelper Modify(int v, ContactData contact, ContactData newContactData)
         {
+            ContactExistenceVer(contact);
             SelectContact(v);
             InitContactModification(v);
-            FillContactForm2(contact);
+            FillContactForm2(newContactData);
             SubmitContactModification();
             return this;
         }
 
         
 
-        public ContactsHelper Remove(int v)
+        public ContactsHelper Remove(ContactData contact, int v)
         {
-            
+
+            ContactExistenceVer(contact);
             SelectContact(v);
             RemoveContact();
 
@@ -79,13 +81,18 @@ namespace WebAddressbookTests
             Type(By.Name("email2"), contact.Email2);
             Type(By.Name("email3"), contact.Email3);
             Type(By.Name("homepage"), contact.Homepage);                        
-            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
-            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
-            Type(By.Name("byear"), contact.Byear);            
-            new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
-            new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
-            Type(By.Name("ayear"), contact.Ayear);            
-            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(contact.New_group);
+            //new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
+            Type2(By.Name("bday"), contact.Bday);
+            //new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
+            Type2(By.Name("bmonth"), contact.Bmonth);
+            Type(By.Name("byear"), contact.Byear);
+            //new SelectElement(driver.FindElement(By.Name("aday"))).SelectByText(contact.Aday);
+            Type2(By.Name("aday"), contact.Aday);
+            //new SelectElement(driver.FindElement(By.Name("amonth"))).SelectByText(contact.Amonth);
+            Type2(By.Name("amonth"), contact.Amonth);
+            Type(By.Name("ayear"), contact.Ayear);
+            //new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(contact.New_group);
+            Type2(By.Name("new_group"), contact.New_group);
             Type(By.Name("address2"), contact.Address2);
             Type(By.Name("phone2"), contact.Phone2);
             Type(By.Name("notes"), contact.Notes);           
@@ -163,5 +170,25 @@ namespace WebAddressbookTests
 
             return this;
         }
+        public void ContactExistenceVer(ContactData contact)
+        {
+            if (ContactExist())
+            {
+                return;
+            }
+            manager.Navigator.GoToHomePage();
+            InitNewContactCreation();
+            FillContactForm(contact);
+            SubmitContactCreation();
+            manager.Navigator.GoToHomePage();
+        }
+
+        public bool ContactExist()
+        {            
+            return IsElementPresent(By.XPath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+        }
+
+
+
     }
 }

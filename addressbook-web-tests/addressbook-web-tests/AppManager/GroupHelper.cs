@@ -46,9 +46,10 @@ namespace WebAddressbookTests
 
         
 
-        public GroupHelper Remove(int v)
+        public GroupHelper Remove(GroupData group, int v)
         {
             manager.Navigator.GoToGroupsPage();
+            GroupExistenceVer(group);
             SelectGroup(v);
             RemoveGroup();
             return this;

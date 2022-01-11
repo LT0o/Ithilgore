@@ -37,7 +37,8 @@ namespace WebAddressbookTests
             contact.Aday = "1";
             contact.Amonth = "January";
             contact.Ayear = "1990";
-            contact.New_group = "zGroupName15";
+            //contact.New_group = "zGroupName15";
+            contact.New_group = null;
             contact.Address2 = "zAddress-2";
             contact.Phone2 = "zPhone-2";
             contact.Notes = "zNotes-2";
