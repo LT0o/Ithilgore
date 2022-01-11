@@ -30,9 +30,10 @@ namespace WebAddressbookTests
             return this;
         }
 
-        public GroupHelper Modify(int v, GroupData newData)
+        public GroupHelper Modify(int v, GroupData group, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
+            GroupExistenceVer(group);
             SelectGroup(v);
             InitGroupModification();
             FillGroupForm(newData);
@@ -114,5 +115,24 @@ namespace WebAddressbookTests
             return this;
         }
 
+
+        public void GroupExistenceVer(GroupData group)
+        {
+            if (GroupExist())
+            {
+                return;
+            }
+            manager.Navigator.GoToGroupsPage();
+            InitNewGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            manager.Navigator.GoToGroupsPage();
+
+        }
+
+        public bool GroupExist()
+        {
+            return IsElementPresent(By.XPath("//div[@id='content']/form/span[1]/input"));            
+        }
     }
 }
