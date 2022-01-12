@@ -103,6 +103,11 @@
     <Compile Include="AddressBook\Tests\Contacts\ContactsCreationTests.cs" />
     <Compile Include="AddressBook\Tests\Contacts\ContactsModsTests.cs" />
     <Compile Include="AddressBook\Tests\Contacts\ContactsRemovalTests.cs" />
+    <Compile Include="AddressBook\Tests\Cycles\Cycle2.cs" />
+    <Compile Include="AddressBook\Tests\Cycles\Cycle1.cs" />
+    <Compile Include="AddressBook\Tests\Cycles\Cycle4.1.cs" />
+    <Compile Include="AddressBook\Tests\Cycles\Cycle4.0.cs" />
+    <Compile Include="AddressBook\Tests\Cycles\Cycle3.cs" />
     <Compile Include="AddressBook\Tests\Groups\GroupModificationTests.cs" />
     <Compile Include="AddressBook\Tests\LoginTests.cs" />
     <Compile Include="AddressBook\Tests\NOT USED %28TestSuiteFixture%29.cs" />

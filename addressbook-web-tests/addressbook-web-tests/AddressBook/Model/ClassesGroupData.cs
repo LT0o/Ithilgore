@@ -12,6 +12,7 @@ namespace WebAddressbookTests
         private string header;
         private string footer;
 
+       
         //public GroupData(string name, string header, string footer)
         //{
         //    this.name = name;
@@ -56,5 +57,7 @@ namespace WebAddressbookTests
                 footer = value;
             }
         }
+
+        public string Text { get; }
     }
 }

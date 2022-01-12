@@ -2,7 +2,9 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Collections.Generic;
 using NUnit.Framework;
+
 
 
 namespace WebAddressbookTests
@@ -22,9 +24,12 @@ namespace WebAddressbookTests
             group.Header = "zGroupHeader";
             group.Footer = "zGroupFooter15";
 
-            
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
             app.Groups.CreateGroup(group);
             app.Navigator.GoToGroupsPage();
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
+
             //app.Navigator.GoToGPandLogout();
         }
         #endregion
@@ -39,15 +44,34 @@ namespace WebAddressbookTests
             group.Header = "";
             group.Footer = "";
 
-            
+
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
             app.Groups.CreateGroup(group);
-            app.Navigator.GoToGPandLogout();
+            app.Navigator.GoToGroupsPage();
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
         }
         #endregion
 
 
+        #region Test3
+        public void BadNameGroupCreationTest()
+        {
+            GroupData group = new GroupData();
+            group.Name = "z'z";
+            group.Header = "";
+            group.Footer = "";
 
-        
+
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            app.Groups.CreateGroup(group);
+            app.Navigator.GoToGroupsPage();
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
+        }
+        #endregion
+
+
 
 
 
