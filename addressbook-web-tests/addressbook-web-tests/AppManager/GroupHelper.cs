@@ -39,7 +39,10 @@ namespace WebAddressbookTests
             {
                 //GroupData group = new GroupData(element.Text);
                 //groups.Add(group); 
-                groups.Add(new GroupData(element.Text));
+                //groups.Add(new GroupData(element.Text));
+                GroupData group = new GroupData();
+                group.Name = element.Text;
+                groups.Add(group);
 
             }
 

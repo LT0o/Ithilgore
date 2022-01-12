@@ -53,6 +53,7 @@ namespace WebAddressbookTests
         }
         #endregion
 
+        [Test]
 
         #region Test3
         public void BadNameGroupCreationTest()
