@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebAddressbookTests
+namespace WebAddressbookTests 
 {
-    public class ContactData
+    public class ContactData //: IEquatable<ContactData>, IComparable<ContactData>
     {
         private string firstname;
         private string middlename;
@@ -34,9 +34,13 @@ namespace WebAddressbookTests
         private string phone2;
         private string notes;
 
-        
+        //public ContactData(string firstname, string lastname)
+        //{
+        //    this.firstname = firstname;
+        //    this.lastname = lastname;
+        //}
 
-        
+
         public string Firstname
         {
             get

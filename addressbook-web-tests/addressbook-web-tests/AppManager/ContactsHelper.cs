@@ -7,6 +7,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 
 namespace WebAddressbookTests
 {
@@ -27,6 +28,30 @@ namespace WebAddressbookTests
             FillContactForm(contact);
             SubmitContactCreation();
             return this;
+        }
+
+        public List<ContactData> GetContactList()
+        {
+            manager.Navigator.GoToHomePage();
+            List<ContactData> contacts = new List<ContactData>();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("tr[name='entry']")); 
+                                                                                                         
+                                                                                                        
+            foreach (IWebElement element in elements)
+            {
+                IWebElement First = element.FindElement(By.CssSelector("td:nth-child(3)"));
+                IWebElement Last = element.FindElement(By.CssSelector("td:nth-child(2)"));
+
+                ContactData contact = new ContactData();
+                contact.Firstname = element.Text;
+                contact.Lastname = element.Text;
+                contacts.Add(contact);
+
+                
+
+            }
+
+            return contacts;
         }
 
         public ContactsHelper Modify(int v, ContactData contact, ContactData newContactData)
