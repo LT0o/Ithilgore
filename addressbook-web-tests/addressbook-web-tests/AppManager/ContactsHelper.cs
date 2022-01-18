@@ -42,7 +42,7 @@ namespace WebAddressbookTests
                 IWebElement First = element.FindElement(By.CssSelector("td:nth-child(3)"));
                 IWebElement Last = element.FindElement(By.CssSelector("td:nth-child(2)"));
 
-                ContactData contact = new ContactData();
+                ContactData contact = new ContactData(null, null);
                 contact.Firstname = element.Text;
                 contact.Lastname = element.Text;
                 contacts.Add(contact);

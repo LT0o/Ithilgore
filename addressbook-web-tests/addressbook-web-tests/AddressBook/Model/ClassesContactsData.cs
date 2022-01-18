@@ -40,7 +40,11 @@ namespace WebAddressbookTests
         //    this.lastname = lastname;
         //}
 
-
+        public ContactData(string firstname, string lastname)
+        {
+            Firstname = firstname;
+            Lastname = lastname;
+        }
 
 
 

@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         {
             //4tester: Учитывается шапка таблицы. Выбираем число на +1 от необходимого. Хотим удалить третью строчку - в параметр вбиваем 4. 
             #region Test data for new contact 
-            ContactData contact = new ContactData();
+            ContactData contact = new ContactData(null, null);
             contact.Firstname = "zFirstName783783783";
             contact.Middlename = "zMiddleName";
             contact.Lastname = "zLastName";

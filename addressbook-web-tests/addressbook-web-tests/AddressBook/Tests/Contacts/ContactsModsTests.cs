@@ -14,7 +14,7 @@ namespace WebAddressbookTests
         public void ContactModificationTest()
         {
             #region Testdata
-            ContactData newContactData = new ContactData();
+            ContactData newContactData = new ContactData(null, null);
             newContactData.Firstname = "zFirstName900000000";
             //newContactData.Middlename = "zMiddleName";
             newContactData.Middlename = null;
@@ -43,7 +43,7 @@ namespace WebAddressbookTests
             newContactData.Notes = "zNotes-2";
 
             #region Test data for new contact 
-            ContactData contact = new ContactData();
+            ContactData contact = new ContactData(null, null);
             contact.Firstname = "zFirstName333333333";
             contact.Middlename = "zMiddleName";
             contact.Lastname = "zLastName";

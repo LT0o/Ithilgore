@@ -16,7 +16,7 @@ namespace WebAddressbookTests
         [Test]
         public void ContactsCreationTest()
         {
-            ContactData contact = new ContactData();
+            ContactData contact = new ContactData(null, null);
             contact.Firstname = "zFirstName129";
             contact.Middlename = "zMiddleName";
             contact.Lastname = "zLastName";
@@ -61,7 +61,7 @@ namespace WebAddressbookTests
         [Test]
         public void ContactsCreationTest_2()
         {
-            ContactData contact = new ContactData();
+            ContactData contact = new ContactData(null, null);
             contact.Firstname = "zFirstName129";
             contact.Middlename = "zMiddleName";
             contact.Lastname = "zLastName";
