@@ -38,7 +38,7 @@ namespace WebAddressbookTests
             app.Groups.Remove(group, 1);
             app.Navigator.GoToGroupsPage();
             //app.Navigator.GoToGPandLogout();
-
+            Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetGroupCount());
             List<GroupData> newGroups = app.Groups.GetGroupList();
             oldGroups.RemoveAt(0); 
             //RemoveAt(0) не работает для изначально пустого списка.

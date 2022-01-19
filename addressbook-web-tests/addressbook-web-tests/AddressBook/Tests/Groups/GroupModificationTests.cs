@@ -33,6 +33,7 @@ namespace WebAddressbookTests
             app.Groups.Modify(1, group, newData );
             app.Navigator.GoToGroupsPage();
             //app.Navigator.GoToGPandLogout();
+            Assert.AreEqual(oldGroups.Count, app.Groups.GetGroupCount());
             List<GroupData> newGroups = app.Groups.GetGroupList();
             oldGroups[0].Name = newData.Name;
             oldGroups.Sort();
