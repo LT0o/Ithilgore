@@ -47,10 +47,17 @@ namespace WebAddressbookTests
                     IWebElement Firstname = element.FindElement(By.CssSelector("td:nth-child(3)"));
                     IWebElement Lastname = element.FindElement(By.CssSelector("td:nth-child(2)"));
 
-                    ContactData contact = new ContactData(null, null);
-                    contact.Firstname = element.Text;
-                    contact.Lastname = element.Text;
+                    //ContactData contact = new ContactData(null, null);
+                    //contact.Firstname = element.Text;
+                    //contact.Lastname = element.Text;
+                    //contactCache.Add(contact); 
+                    ContactData contact = new ContactData(element.Text)
+                    {
+                        Id = element.FindElement(By.TagName("input")).GetAttribute("value")
+                    };
                     contactCache.Add(contact);
+
+
 
                 }
             }
