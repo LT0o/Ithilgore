@@ -49,11 +49,10 @@ namespace WebAddressbookTests
 
                     //GroupData group = new GroupData();
                     //group.Name = element.Text;
-                    GroupData group = new GroupData(element.Text)
+                    groupCache.Add(new GroupData(element.Text)
                     {
                         Id = element.FindElement(By.TagName("input")).GetAttribute("value")
-                    };
-                    groupCache.Add(group);
+                    });
 
                 }
             }
@@ -86,6 +85,15 @@ namespace WebAddressbookTests
             RemoveGroup();
             return this;
 
+        }
+        public GroupHelper Remove2(int v)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup(v);
+            RemoveGroup();
+            manager.Navigator.GoToGroupsPage();
+
+            return this;
         }
 
         public int GetGroupCount()

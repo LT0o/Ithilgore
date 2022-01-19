@@ -51,11 +51,10 @@ namespace WebAddressbookTests
                     //contact.Firstname = element.Text;
                     //contact.Lastname = element.Text;
                     //contactCache.Add(contact); 
-                    ContactData contact = new ContactData(element.Text)
+                    contactCache.Add(new ContactData(element.Text)
                     {
                         Id = element.FindElement(By.TagName("input")).GetAttribute("value")
-                    };
-                    contactCache.Add(contact);
+                    });
 
 
 
@@ -79,8 +78,15 @@ namespace WebAddressbookTests
             SubmitContactModification();
             return this;
         }
+        public ContactsHelper Modify2(int v, ContactData newContactData)
+        {
+            InitContactModification(v);
+            FillContactForm(newContactData);
+            SubmitContactModification();
+            manager.Navigator.GoToHomePage();
+            return this;
+        }
 
-        
 
         public ContactsHelper Remove(ContactData contact, int v)
         {
@@ -91,6 +97,13 @@ namespace WebAddressbookTests
 
 
 
+            return this;
+        }
+        public ContactsHelper Remove2(int v)
+        {
+            SelectContact(v);
+            RemoveContact();
+            manager.Navigator.GoToHomePage();
             return this;
         }
 
@@ -186,7 +199,7 @@ namespace WebAddressbookTests
         public ContactsHelper SelectContact(int index)
         {
             //driver.FindElement(By.Id(index.ToString())).Click();  - Это работает, но не является удобным. Оставлено для истории. 
-            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + index + "]/td/input")).Click();
+            driver.FindElement(By.XPath("//table[@id='maintable']/tbody/tr[" + (index + 1) + "]/td/input")).Click();
             return this;
         }
 
