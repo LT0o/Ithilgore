@@ -1,64 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-
+﻿using OpenQA.Selenium;
 namespace WebAddressbookTests
 {
-    public class NavigationHelper : HelperBase
+    public class bNavigationHelper : HelperBase
     {
-        private string baseURL; 
-        public NavigationHelper(ApplicationManager manager, string baseURL) 
-            : base(manager)
-        {
-            this.baseURL = baseURL;
-        }
+            private string baseURL;
 
-
-
-        public NavigationHelper GoToGPandLogout()
-        {
-            GoToGroupsPage();
-            manager.Auth.Logout();
-            return this;
-        }
-
-
-
-
-        public void GoToHomePage()
-        {
-            if (driver.Url == baseURL)               
+            public bNavigationHelper(mApplicationManager manager, string baseURL): base(manager)
             {
-                return;
+                this.baseURL = baseURL;
             }
-            driver.Navigate().GoToUrl(baseURL);
-        }
-
-        public void GoToGroupsPage()
-        {
-            if (driver.Url == baseURL + "/group.php"
+            public void OpenHomePage()
+            {
+            //Open home page
+            if (driver.Url == baseURL + "/addressbook/"
+            && IsElementPresent(By.Name("new")))
+                {
+                    return;
+                }
+                driver.Navigate().GoToUrl(baseURL + "/addressbook");
+            }
+            public void GoToGroupsPage()
+            {
+            
+            if (driver.Url == baseURL + "/addressbook/group.php"
                 && IsElementPresent(By.Name("new")))
             {
                 return;
             }
-            driver.FindElement(By.LinkText("groups")).Click();
-        }
-
-        public NavigationHelper GoToHPandLogout()
-        {
-            GoToHomePage();
-            manager.Auth.Logout();
-            return this;
-        }
-
-
-
-
+             driver.FindElement(By.LinkText("groups")).Click(); ;
+            }
+            
     }
 }

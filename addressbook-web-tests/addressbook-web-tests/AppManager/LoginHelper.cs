@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
+using System;
 
 namespace WebAddressbookTests
 {
-    public class LoginHelper : HelperBase
+    public class bLoginHelper : HelperBase
     {
-        
-        public LoginHelper(ApplicationManager manager) 
-            : base(manager)
+        public bLoginHelper(mApplicationManager manager) : base(manager)
         {
-           
+
         }
 
+        public void Logout()
+        {
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.LinkText("Logout")).Click();
+            }
+        }
         public void Login(AccountData account)
         {
             if (IsLoggedIn())
@@ -29,40 +27,25 @@ namespace WebAddressbookTests
                 }
                 Logout();
             }
-
-
             Type(By.Name("user"), account.Username);
             Type(By.Name("pass"), account.Password);
+
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-
-                      
-        }
-         
-
-        public void Logout()
-        {
-            if (IsLoggedIn())
-            {
-                driver.FindElement(By.LinkText("Logout")).Click();
-            }
-            
-        }
-
-
-
-
-        public bool IsLoggedIn()
-        {
-            return IsElementPresent(By.Name("logout"));
         }
         public bool IsLoggedIn(AccountData account)
         {
             return IsLoggedIn()
-                && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text
-                    == "(" + account.Username + ")";
+                && GetLoggetUserName() == account.Username;
         }
 
-
-
+        private string GetLoggetUserName()
+        {
+            string text = driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text;
+            return text.Substring(1,text.Length-2);
+        }
+        public bool IsLoggedIn()
+        {
+            return IsElementPresent(By.Name("logout"));
+        }
     }
 }

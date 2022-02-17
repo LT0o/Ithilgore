@@ -1,183 +1,145 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace WebAddressbookTests
 {
-    public class GroupHelper : HelperBase
+    public class bGroupHelper : HelperBase
     {
-
-
-        public GroupHelper(ApplicationManager manager) 
-            : base(manager)
+        public bGroupHelper(mApplicationManager manager) : base(manager)
         {
+
         }
+        //CREATION
 
-      
-
-        public GroupHelper CreateGroup(GroupData group)
+        public bGroupHelper Create(GroupData groupdata)
         {
             manager.Navigator.GoToGroupsPage();
-            InitNewGroupCreation();
-            FillGroupForm(group);
-            SubmitGroupCreation();
+            InitGroupCreation();
+            FillGroupForm(groupdata);
+            Submit();
             manager.Navigator.GoToGroupsPage();
             return this;
         }
-
-        private List<GroupData> groupCache = null; 
-
-
-        public List<GroupData> GetGroupList()
-        {
-            if (groupCache == null)
-            {
-                groupCache = new List<GroupData>();
-                manager.Navigator.GoToGroupsPage();
-                ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
-                foreach (IWebElement element in elements)
-                {
-                    //GroupData group = new GroupData(element.Text);
-                    //groups.Add(group); 
-                    //groups.Add(new GroupData(element.Text));
-
-                    //GroupData group = new GroupData();
-                    //group.Name = element.Text;
-                    groupCache.Add(new GroupData(element.Text)
-                    {
-                        Id = element.FindElement(By.TagName("input")).GetAttribute("value")
-                    });
-
-                }
-            }
-            
-
-            return new List<GroupData>(groupCache);
-        }
-
-        public GroupHelper Modify(int v, GroupData group, GroupData newData)
-        {
-            manager.Navigator.GoToGroupsPage();
-            GroupExistenceVer(group);
-            SelectGroup(v);
-            InitGroupModification();
-            FillGroupForm(newData);
-            SubmitGroupModification();
-
-
-            return this;
-            
-        }
-
-        
-
-        public GroupHelper Remove(GroupData group, int v)
-        {
-            manager.Navigator.GoToGroupsPage();
-            GroupExistenceVer(group);
-            SelectGroup(v);
-            RemoveGroup();
-            return this;
-
-        }
-        public GroupHelper Remove2(int v)
-        {
-            manager.Navigator.GoToGroupsPage();
-            SelectGroup(v);
-            RemoveGroup();
-            manager.Navigator.GoToGroupsPage();
-
-            return this;
-        }
-
-        public int GetGroupCount()
-        {
-            return driver.FindElements(By.CssSelector("span.group")).Count;
-        }
-
-        public GroupHelper InitNewGroupCreation()
+        public bGroupHelper InitGroupCreation()
         {
             driver.FindElement(By.Name("new")).Click();
             return this;
         }
+        //MODIFY
 
-        public GroupHelper FillGroupForm(GroupData group)
+        public bGroupHelper Modify(GroupData newData, int index)
         {
-            Type(By.Name("group_name"), group.Name);
-            Type(By.Name("group_header"), group.Header);
-            Type(By.Name("group_footer"), group.Footer);
+            manager.Navigator.GoToGroupsPage();
+
+            SelectGroup(index);
+            InitGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            manager.Navigator.GoToGroupsPage();
             return this;
         }
-
-        
-
-        public GroupHelper SubmitGroupCreation()
+        public bGroupHelper Modify(GroupData newData, GroupData group)
         {
-            driver.FindElement(By.Name("submit")).Click();
-            groupCache = null; 
+            manager.Navigator.GoToGroupsPage();
+
+            SelectGroup(group.Id);
+            InitGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            manager.Navigator.GoToGroupsPage();
             return this;
         }
-
-
-        public GroupHelper SelectGroup(int index)
+        public int GetGroupCount()
         {
-            driver.FindElement(By.XPath("//div[@id='content']/form/span[" + index + "]/input")).Click();
-            return this;
+           return driver.FindElements(By.CssSelector("span.group")).Count;
         }
 
-        public GroupHelper RemoveGroup()
+        public bGroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
+        public bGroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            groupCache = null;
+            return this;
+        }
+ 
+        //REMOVE
+        public bGroupHelper Remove(int index)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup(index);
+            Removal();
+            manager.Navigator.GoToGroupsPage();
+            return this;
+        }
+        public bGroupHelper Remove(GroupData group)
+        {
+            manager.Navigator.GoToGroupsPage();
+            SelectGroup(group.Id);
+            Removal();
+            manager.Navigator.GoToGroupsPage();
+            return this;
+        }
+        public bGroupHelper Removal()
         {
             driver.FindElement(By.Name("delete")).Click();
             groupCache = null;
             return this;
         }
 
-
-
-
-
-
-
-      
-
-        public GroupHelper InitGroupModification()
+        //ADDITIONAL
+        public bGroupHelper SelectGroup(int index)
         {
-
-            driver.FindElement(By.Name("edit")).Click();
+            driver.FindElement(By.Name("selected[]")).Click();
 
             return this;
         }
-        public GroupHelper SubmitGroupModification()
+        public bGroupHelper SelectGroup(string id)
         {
-            driver.FindElement(By.Name("update")).Click();
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value= '" +id+"'])")).Click();
 
             return this;
         }
-
-
-        public void GroupExistenceVer(GroupData group)
+        public bGroupHelper Submit()
         {
-            if (GroupExist())
+            driver.FindElement(By.Name("submit")).Click();
+            groupCache = null;
+            return this;
+        }
+        public bGroupHelper FillGroupForm(GroupData groupdata)
+        {
+            Type(By.Name("group_name"), groupdata.GroupName);
+            Type(By.Name("group_header"), groupdata.GroupHeader);
+            Type(By.Name("group_footer"), groupdata.GroupFooter);
+            return this;
+        }  
+        public bool IsGroupExist(string groupname)
+        {
+            return driver.FindElement(By.XPath("//input[@name='selected[]']")).Text == groupname;
+        }
+        private List<GroupData> groupCache = null;
+        public List<GroupData> GetGroupList()
+        {
+
+            if (groupCache == null)
             {
-                return;
+                groupCache = new List<GroupData>();
+
+                List<GroupData> groups = new List<GroupData>();
+                manager.Navigator.GoToGroupsPage();
+                ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+                foreach (IWebElement element in elements)
+                {
+
+                    groupCache.Add(new GroupData(element.Text) { Id = element.FindElement(By.TagName("input")).GetAttribute("value") });
+                }
             }
-            manager.Navigator.GoToGroupsPage();
-            InitNewGroupCreation();
-            FillGroupForm(group);
-            SubmitGroupCreation();
-            manager.Navigator.GoToGroupsPage();
 
-        }
-
-        public bool GroupExist()
-        {
-            return IsElementPresent(By.XPath("//div[@id='content']/form/span[1]/input"));            
+            return new List < GroupData >(groupCache);
         }
     }
 }
