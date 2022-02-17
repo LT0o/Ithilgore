@@ -12,7 +12,7 @@ namespace addressbook_tests_autoit
 
         {
             aux = new AutoItX3();
-            aux.Run(@"C:\Users\olga.tikhonova.FLEX\Downloads\FreeAddressBookPortable\AddressBook.exe","",aux.SW_SHOW);
+            aux.Run(@"C:\Users\1.1\Downloads\FreeAddressBookPortable\AddressBook.exe","",aux.SW_SHOW);
             aux.WinWait(WINTITLE);
             aux.WinActivate(WINTITLE);
           //  aux.WinWaitActive(WINTITLE);
